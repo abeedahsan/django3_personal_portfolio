@@ -1,0 +1,18 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+{% load static%}
+
+
+	<h1>Abeed has added {{ blogs.count }} blog{{ blogs.count|pluralize }}</h1>
+
+	 <br><br>
+	{% for blog in blogs %}
+	<a href="{% url 'blog:details' blog.id %}" ><h4>{{ blog.title|safe }}</h4> </a>
+	{{ blog.author|safe }}<br>
+	{{ blog.date|date:'M d'|upper }}       
+	<h6>{{ blog.description|striptags|truncatechars:100 }}</h6> <br> <br>
+
+
+	{% endfor %}
+{% endblock %}
